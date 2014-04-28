@@ -1,0 +1,29 @@
+<h1>Listing answer_comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>content</th>
+      <th>user_id</th>
+      <th>answer_id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answer_comments.each do |answer_comment| %>
+      <tr>
+        <td><%= answer_comment.content %></td>
+        <td><%= answer_comment.user_id %></td>
+        <td><%= answer_comment.answer_id %></td>
+        <td><%= link_to 'Show', answer_comment %></td>
+        <td><%= link_to 'Edit', edit_answer_comment_path(answer_comment) %></td>
+        <td><%= link_to 'Destroy', answer_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Answer comment', new_answer_comment_path %>

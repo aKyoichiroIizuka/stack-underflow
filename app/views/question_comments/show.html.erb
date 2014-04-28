@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question_comment.question_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @question_comment.user_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @question_comment.content %>
+</p>
+
+<%= link_to 'Edit', edit_question_comment_path(@question_comment) %> |
+<%= link_to 'Back', question_comments_path %>
