@@ -50,3 +50,10 @@ td.answers{
 td.views{
 	color: dimgray;
 }
+
+table.answers-table{
+	width: 95%;
+}
+td.vote-area{
+	width: 40px;
+}

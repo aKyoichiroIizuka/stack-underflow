@@ -1,33 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<h2><%= @question.title %></h2>
 
 <p>
-  <strong>User:</strong>
-  <%= @question.user && @question.user.name %>
+  <%= button_tag "+" %> <%= @question.total_points %> <%= button_tag "-" %>
 </p>
-
 <p>
-  <strong>Content:</strong>
   <%= @question.content %>
 </p>
 
-<p><strong>Comment:</strong></p>
+<h3>Comments</h3>
 <ul>
   <% @question.question_comments.each do |comment| %>
     <li><%= comment.content %></li>
   <% end %>
 </ul>
 
-<p><strong>Answer:</strong></p>
-<ul>
-  <% @question.answers.each do |answer| %>
-    <li><%= answer.content %></li>
-  <% end %>
-</ul>
+<h3>Answers</h3>
+<% @question.answers.each do |answer| %>
+
+<table class="answers-table">
+  <tr>
+    <td class="vote-area"><%= button_tag "+" %><br /><%= answer.total_points %><br /><%= button_tag "-" %></td>
+    <td class="answer-content-area">
+      <p><%= answer.content %></p>
+      <p>by <%= answer.user && answer.user.name %></p>
+      <% if answer.answer_comments.length > 0 %>
+      <% answer.answer_comments.each do |ac| %>
+        <hr />
+        <p><%= ac.content %></p>
+        <p>by <%= ac.user && ac.user.name %></p>
+      <% end %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+</div>
+<% end %>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
