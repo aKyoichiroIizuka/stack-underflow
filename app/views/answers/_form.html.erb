@@ -13,17 +13,17 @@
   
   <p>
   <%= f.label :content %><br />
-  <%= f.text_field :content %>
+  <%= f.text_area :content %>
   </p>
   
   <p>
   <%= f.label :user_id %><br />
-  <%= f.number_field :user_id %>
+  <%= f.select :user_id, User.all.collect {|x| [x.email, x.id]} %>
   </p>
   
   <p>
   <%= f.label :question_id %><br />
-  <%= f.number_field :question_id %>
+  <%= f.select :question_id, Question.all.collect {|x| [x.title, x.id]} %>
   </p>
 
   <div class="actions">

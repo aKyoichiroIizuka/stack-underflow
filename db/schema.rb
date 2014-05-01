@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428064202) do
+ActiveRecord::Schema.define(version: 20140501014748) do
 
   create_table "answer_comments", force: true do |t|
     t.string   "content"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140428064202) do
   end
 
   create_table "answers", force: true do |t|
-    t.string   "content"
+    t.text     "content",     limit: 255
     t.integer  "user_id"
     t.integer  "question_id"
     t.datetime "created_at"
