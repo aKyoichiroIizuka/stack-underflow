@@ -22,12 +22,12 @@
   <tr>
     <td class="vote-area"><%= button_tag "+" %><br /><%= answer.total_points %><br /><%= button_tag "-" %></td>
     <td class="answer-content-area">
-      <p><%= answer.content %></p>
+      <p><%=br answer.content %></p>
       <p>by <%= answer.user && answer.user.name %></p>
       <% if answer.answer_comments.length > 0 %>
       <% answer.answer_comments.each do |ac| %>
         <hr />
-        <p><%= ac.content %></p>
+        <p><%=br ac.content %></p>
         <p>by <%= ac.user && ac.user.name %></p>
       <% end %>
       <% end %>
