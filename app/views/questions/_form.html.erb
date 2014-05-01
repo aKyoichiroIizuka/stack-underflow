@@ -13,19 +13,20 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :size => 40 %>
   </div>
-  <div class="field">
-    <%= f.label :id %><br>
-    <%= f.number_field :id %>
-  </div>
+  <% if current_user.nil? %>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.select :user_id, User.all.collect {|x| [x.name, x.id] }%>
   </div>
+  <% else %>
+    <% @question.user_id = current_user.id %>
+    <%= f.hidden_field :user_id %>
+  <% end %>
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :cols => 50, :rows => 10 %>
   </div>
   <div class="actions">
     <%= f.submit %>

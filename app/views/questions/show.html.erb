@@ -6,13 +6,8 @@
 </p>
 
 <p>
-  <strong>Id:</strong>
-  <%= @question.id %>
-</p>
-
-<p>
   <strong>User:</strong>
-  <%= @question.user_id %>
+  <%= @question.user && @question.user.name %>
 </p>
 
 <p>

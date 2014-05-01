@@ -13,3 +13,6 @@
 </tr>
 <% end %>
 <table>
+<% if !current_user.nil? %>
+<p><%= link_to "New Question", new_question_path %></p>
+<% end %>

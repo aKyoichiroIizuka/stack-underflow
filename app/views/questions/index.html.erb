@@ -16,7 +16,7 @@
       <tr>
         <td><%= question.title %></td>
         <td><%= question.id %></td>
-        <td><%= question.user_id %></td>
+        <td><%= question.user && question.user.name %></td>
         <td><%= question.content %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
