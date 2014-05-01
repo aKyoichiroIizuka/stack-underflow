@@ -9,7 +9,12 @@ Rails.application.routes.draw do
       post "downvote", :as => "downvote"
     end
   end
-  resources :answers
+  resources :answers do
+    member do
+      post "answer_upvote", :as => "upvote"
+      post "answer_downvote", :as => "downvote"
+    end
+  end
   resources :answer_votes
   resources :answer_comments
   # The priority is based upon order of creation: first created -> highest priority.
