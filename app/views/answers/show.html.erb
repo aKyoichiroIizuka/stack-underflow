@@ -15,5 +15,17 @@
 <%= @answer.question_id %>
 </p>
 
+<h2>Answer Votes</h2>
+Votes: <%= @answer.total_points %>
+
+<h2>Answer Comments</h2>
+<% @answer.answer_comments.each do |anscom| %>
+	<ul>
+		<li>Content: <%= anscom.content %></li>
+		<li>Comment by: <%= anscom.user && anscom.user.email %></li>
+	</ul>
+<% end %>
+
+
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
 <%= link_to 'Back', answers_path %>

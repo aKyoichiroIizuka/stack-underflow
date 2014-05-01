@@ -18,12 +18,12 @@
 
 <p>
 <%= f.label :user_id %><br />
-<%= f.number_field :user_id %>
+<%= f.select :user_id,User.all.collect{|x| [x.email,x.id]} %>
 </p>
 
 <p>
 <%= f.label :answer_id %><br />
-<%= f.number_field :answer_id %>
+<%= f.select :answer_id,Answer.all.collect {|x| [x.question.title,x.id]} %>
 </p>
 
   <div class="actions">
