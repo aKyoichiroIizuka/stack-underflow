@@ -9,6 +9,10 @@
 	<%= link_to question.title, question %><br />
 	asked by <%= question.user && question.user.email %>
 	</td>
+	<td>
+	<br />
+	at <%= question.updated_at.strftime('%H:%M:%S, %b %d, %Y') %>
+	</td>
 </tr>
 <% end %>
 <table>
