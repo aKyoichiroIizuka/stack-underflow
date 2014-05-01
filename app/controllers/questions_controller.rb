@@ -10,6 +10,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @comment = QuestionComment.new
+    @comment.question_id = @question.id
   end
 
   # GET /questions/new

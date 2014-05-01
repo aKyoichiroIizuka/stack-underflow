@@ -14,7 +14,7 @@
     <% @answer_comments.each do |answer_comment| %>
       <tr>
         <td><%=br answer_comment.content %></td>
-        <td><%= answer_comment.user.name %></td>
+        <td><%= answer_comment.user && answer_comment.user.name %></td>
         <td><%= answer_comment.answer_id %></td>
         <td><%= link_to 'Show', answer_comment %></td>
         <td><%= link_to 'Edit', edit_answer_comment_path(answer_comment) %></td>

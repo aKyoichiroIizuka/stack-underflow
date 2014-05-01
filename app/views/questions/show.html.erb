@@ -13,7 +13,15 @@
     <li><%= comment.content %></li>
   <% end %>
 </ul>
-<p><%= link_to "New comment", :action => "new_comment"%></p>
+
+<%= form_for @comment do |f| %>
+Comment: <%= f.text_field :content, :size => 45 %><br />
+<% @comment.user_id = current_user ? current_user.id : 0 %>
+<%= f.hidden_field :user_id %>
+<%= f.hidden_field :question_id %>
+<%= f.button "Submit" %>
+<% end %>
+<!-- <p><%= link_to "New comment", :action => "new_comment"%></p> -->
 
 <h3>Answers</h3>
 <% @question.answers.each do |answer| %>
