@@ -2,9 +2,9 @@
 <table>
 <% @questions.each do |question| %>
 <tr>
-	<td class="center votes">0<br />vote</td>
-	<td class="center answers">0<br />answers</td>
-	<td class="center views">0<br />view</td>
+	<td class="center votes"><%= question.total_points %><br />votes</td>
+	<td class="center answers"><%= question.answers.length %><br />answers</td>
+	<td class="center views">0<br />views</td>
 	<td>
 	<%= link_to question.title, question %><br />
 	asked by <%= question.user && question.user.name %>

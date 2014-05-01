@@ -15,7 +15,7 @@
       <tr>
         <td><%= question_vote.value %></td>
         <td><%= question_vote.question.title %></td>
-        <td><%= question_vote.question.user.name %></td>
+        <td><%= question_vote.user && question_vote.user.name %></td>
         <td><%= link_to 'Show', question_vote %></td>
         <td><%= link_to 'Edit', edit_question_vote_path(question_vote) %></td>
         <td><%= link_to 'Destroy', question_vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>

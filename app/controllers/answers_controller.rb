@@ -69,6 +69,7 @@ class AnswersController < ApplicationController
   def upvote
     @vote = AnswerVote.new
     @vote.answer_id = @answer.id
+    @vote.user_id = current_user.id
     @vote.value = 1
     @vote.save
     redirect_to @answer.question, notice: "Answer is upvoted."
@@ -77,6 +78,7 @@ class AnswersController < ApplicationController
   def downvote
     @vote = AnswerVote.new
     @vote.answer_id = @answer.id
+    @vote.user_id = current_user.id
     @vote.value = -1
     @vote.save
     redirect_to @answer.question, notice: "Answer is downvoted."
