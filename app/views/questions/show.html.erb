@@ -17,7 +17,7 @@
     <tr>
       <td>
         <p><%= comment.content %></p>
-        <p>by <%= comment.user.name %></p>
+        <p>by <%= comment.user && comment.user.name %></p>
       </td>
     </tr>
   <% end %>
