@@ -13,8 +13,8 @@
   <tbody>
     <% @question_comments.each do |question_comment| %>
       <tr>
-        <td><%= question_comment.question_id %></td>
-        <td><%= question_comment.user_id %></td>
+        <td><%= question_comment.question.title %></td>
+        <td><%= question_comment.user && question_comment.user.name %></td>
         <td><%= question_comment.content %></td>
         <td><%= link_to 'Show', question_comment %></td>
         <td><%= link_to 'Edit', edit_question_comment_path(question_comment) %></td>
