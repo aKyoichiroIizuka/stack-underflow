@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   resources :question_votes
   resources :questions do
     member do 
-      get "edit_comment"
-      put "post_comment"
+      get "new_comment"
       post "upvote", :as => "upvote"
       post "downvote", :as => "downvote"
     end

@@ -13,6 +13,7 @@
     <li><%= comment.content %></li>
   <% end %>
 </ul>
+<p><%= link_to "New comment", :action => "new_comment"%></p>
 
 <h3>Answers</h3>
 <% @question.answers.each do |answer| %>

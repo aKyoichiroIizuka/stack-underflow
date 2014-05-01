@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :edit_comment, :post_comment]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :new_comment, :post_comment]
 
   # GET /questions
   # GET /questions.json
@@ -61,12 +61,9 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def edit_comment
-
-  end
-
-  def post_comment
-    
+  def new_comment
+    @comment = QuestionComment.new
+    @comment.question_id = @question.id
   end
 
   def upvote
