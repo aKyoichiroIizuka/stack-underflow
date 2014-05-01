@@ -1,7 +1,7 @@
 <h2><%= @question.title %></h2>
 
 <p>
-  <%= button_to "+", :action => "upvote" %> <%= @question.total_points %> <%= button_to "-", action: "downvote" %>
+  <%= button_to "+", :action => "question_upvote" %> <%= @question.total_points %> <%= button_to "-", action: "question_downvote" %>
 </p>
 <p>
   <%=br @question.content %>
@@ -19,7 +19,7 @@
 
 <table class="answers-table">
   <tr>
-    <td class="vote-area"><%= button_tag "+" %><br /><%= answer.total_points %><br /><%= button_tag "-" %></td>
+    <td class="vote-area"><%= button_to "+", upvote_answer_path(answer) %><br /><%= answer.total_points %><br /><%= button_to "-", downvote_answer_path(answer) %></td>
     <td class="answer-content-area">
       <p><%= answer.content %></p>
       <p>by <%= answer.user && answer.user.name %></p>

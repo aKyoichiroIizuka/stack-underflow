@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_answer, only: [:show, :edit, :update, :destroy, :answer_upvote, :answer_downvote]
 
   # GET /answers
   # GET /answers.json
@@ -59,6 +59,22 @@ class AnswersController < ApplicationController
       format.html { redirect_to answers_url }
       format.json { head :no_content }
     end
+  end
+
+  def answer_upvote
+    @vote = AnswerVote.new
+    @vote.answer_id = @answer.id
+    @vote.value = 1
+    @vote.save
+    redirect_to @answer.question, notice: "Answer is upvoted."
+  end
+
+  def answer_downvote
+    @vote = AnswerVote.new
+    @vote.answer_id = @answer.id
+    @vote.value = -1
+    @vote.save
+    redirect_to @answer.question, notice: "Answer is downvoted."
   end
 
   private

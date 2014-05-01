@@ -6,11 +6,16 @@ Rails.application.routes.draw do
     member do 
       get "edit_comment"
       put "post_comment"
-      post "upvote", :as => "upvote"
-      post "downvote", :as => "downvote"
+      post "question_upvote", :as => "question_upvote"
+      post "question_downvote", :as => "question_downvote"
     end
   end
-  resources :answers
+  resources :answers do
+    member do
+      post "answer_upvote", :as => "upvote"
+      post "answer_downvote", :as => "downvote"
+    end
+  end
   resources :answer_votes
   resources :answer_comments
   # The priority is based upon order of creation: first created -> highest priority.
