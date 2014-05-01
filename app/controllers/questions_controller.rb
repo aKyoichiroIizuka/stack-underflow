@@ -12,6 +12,9 @@ class QuestionsController < ApplicationController
   def show
     @comment = QuestionComment.new
     @comment.question_id = @question.id
+
+    @answer = Answer.new
+    @answer.question_id = @question.id
   end
 
   # GET /questions/new
