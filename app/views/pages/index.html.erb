@@ -1,6 +1,3 @@
-<h1>Stack Underflow</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
-
 <h2>Questions</h2>
 <% @questions.each do |question| %>
 	<ul>
@@ -9,22 +6,3 @@
 		<li><%= question.answers.length %> answer(s)</li>
 	</ul>
 <% end %>
-
-<h2>Links</h2>
-<ul>
-	<li><%= link_to "Answers", answers_path %></li>
-	<li><%= link_to "Answer Comments", answer_comments_path %></li>
-	<li><%= link_to "Answer Votes", answer_votes_path %></li>
-	<li><%= link_to "Questions", questions_path %></li>
-	<li><%= link_to "Question Comments", question_comments_path %></li>
-	<li><%= link_to "Question Votes", question_votes_path %></li>
-	<li>Users</li>
-	<ul>
-		<% if current_user %>
-		<li>Signed in as: <%= current_user.email %></li>
-		<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-		<% else %>
-		<li><%= link_to "Sign In", new_user_session_path %></li>
-		<% end %>
-	</ul>
-</ul>
