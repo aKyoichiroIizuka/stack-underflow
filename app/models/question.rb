@@ -5,4 +5,10 @@ class Question < ActiveRecord::Base
   has_many :answers
   
   belongs_to :user
+
+  def total_points
+    q=self.question_votes
+      .sum(:value)
+    return q
+  end
 end
