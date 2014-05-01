@@ -7,4 +7,10 @@ class Question < ActiveRecord::Base
   belongs_to :user
 
   validates :title, :presence => true
+
+  def total_points
+    q=self.question_votes
+      .sum(:value)
+    return q
+  end
 end
