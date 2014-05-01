@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:show, :edit, :update, :destroy, :answer_upvote, :answer_downvote]
+  before_action :set_answer, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /answers
   # GET /answers.json
@@ -61,7 +61,7 @@ class AnswersController < ApplicationController
     end
   end
 
-  def answer_upvote
+  def upvote
     @vote = AnswerVote.new
     @vote.answer_id = @answer.id
     @vote.value = 1
@@ -69,7 +69,7 @@ class AnswersController < ApplicationController
     redirect_to @answer.question, notice: "Answer is upvoted."
   end
 
-  def answer_downvote
+  def downvote
     @vote = AnswerVote.new
     @vote.answer_id = @answer.id
     @vote.value = -1

@@ -66,7 +66,7 @@ class QuestionsController < ApplicationController
     @comment.question_id = @question.id
   end
 
-  def question_upvote
+  def upvote
     @vote = QuestionVote.new
     @vote.question_id = @question.id
     @vote.value = 1
@@ -74,7 +74,7 @@ class QuestionsController < ApplicationController
     redirect_to @question, notice: "Question is upvoted."
   end
 
-  def question_downvote
+  def downvote
     @vote = QuestionVote.new
     @vote.question_id = @question.id
     @vote.value = -1

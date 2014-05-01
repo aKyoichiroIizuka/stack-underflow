@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   end
   resources :answers do
     member do
-      post "answer_upvote", :as => "upvote"
-      post "answer_downvote", :as => "downvote"
+      post "upvote", :as => "upvote"
+      post "downvote", :as => "downvote"
     end
   end
   resources :answer_votes

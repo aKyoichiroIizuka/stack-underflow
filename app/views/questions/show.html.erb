@@ -1,7 +1,7 @@
 <h2><%= @question.title %></h2>
 
 <p>
-  <%= button_to "+", :action => "question_upvote" %> <%= @question.total_points %> <%= button_to "-", action: "question_downvote" %>
+  <%= button_to "+", upvote_question_path(@question) %> <%= @question.total_points %> <%= button_to "-", downvote_question_path(@question) %>
 </p>
 <p>
   <%=br @question.content %>
