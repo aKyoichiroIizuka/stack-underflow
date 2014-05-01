@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+ 
+div#container{
+	width: 900px;
+	margin: auto;
+}
+
+div#title{
+	float: left;
+	clear: both;
+	width: 100%;
+	height: 75px;
+	background-color: #dcdcdc;
+}
+
+div#sidebar{
+	float: left;
+	width: 190px;
+	padding: 5px;
+	background-color: #f0f0f0;
+}
+div#main{
+	float: left;
+	padding: 10px;
+	width: 680px;
+	background-color: #fcfcfc;
+}
+
+td.center{
+	text-align: center;
+	width: 40px;
+}
+td.answers{
+	color: crimson;
+}
+td.views{
+	color: dimgray;
+}
