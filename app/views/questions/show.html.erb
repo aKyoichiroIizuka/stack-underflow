@@ -1,18 +1,27 @@
 <h2><%= @question.title %></h2>
 
-<p>
-  <%= button_to "+", upvote_question_path(@question) %> <%= @question.total_points %> <%= button_to "-", downvote_question_path(@question) %>
-</p>
-<p>
-  <%=br @question.content %>
-</p>
+<table class="question-table">
+  <tr>
+    <td class="vote-area">
+      <%= button_to "+", upvote_question_path(@question) %> <%= @question.total_points %> <%= button_to "-", downvote_question_path(@question) %>
+    </td>
+    <td class="question-content-area">
+      <%=br @question.content %>
+    </td>
+  </tr>
+</table>
 
 <h3>Comments</h3>
-<ul>
+<table>
   <% @question.question_comments.each do |comment| %>
-    <li><%= comment.content %></li>
+    <tr>
+      <td>
+        <p><%= comment.content %></p>
+        <p>by <%= comment.user.name %></p>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
 <% if !current_user.nil? %>
 <%= form_for @comment do |f| %>

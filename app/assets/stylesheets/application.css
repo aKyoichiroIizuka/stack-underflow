@@ -51,7 +51,7 @@ td.views{
 	color: dimgray;
 }
 
-table.answers-table{
+table.answers-table, table.questions-table{
 	width: 95%;
 }
 td.vote-area{
