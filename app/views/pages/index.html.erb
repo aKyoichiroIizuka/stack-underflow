@@ -1,8 +1,14 @@
 <h2>Questions</h2>
+<table>
 <% @questions.each do |question| %>
-	<ul>
-		<li>Title: <%= link_to question.title, question %></li>
-		<li>Question by: <%= question.user && question.user.email %></li>
-		<li><%= question.answers.length %> answer(s)</li>
-	</ul>
+<tr>
+	<td class="center votes">0<br />vote</td>
+	<td class="center answers">0<br />answers</td>
+	<td class="center views">0<br />view</td>
+	<td>
+	<%= link_to question.title, question %><br />
+	asked by <%= question.user && question.user.email %>
+	</td>
+</tr>
 <% end %>
+<table>
