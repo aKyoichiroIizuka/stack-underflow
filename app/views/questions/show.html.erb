@@ -60,11 +60,23 @@ Comment: <%= f.text_field :content, :size => 45 %>
       <p><%=br answer.content %></p>
       <p>by <%= answer.user && answer.user.name %></p>
       <% if answer.answer_comments.length > 0 %>
-      <% answer.answer_comments.each do |ac| %>
-        <hr />
-        <p><%=br ac.content %></p>
-        <p>by <%= ac.user && ac.user.name %></p>
+        <% answer.answer_comments.each do |ac| %>
+          <hr />
+          <p><%=br ac.content %></p>
+          <p>by <%= ac.user && ac.user.name %></p>
+        <% end %>
       <% end %>
+      <% if !current_user.nil? %>
+        <hr />
+        <% ac = AnswerComment.new %>
+        <% ac.answer_id = answer.id %>
+        <% ac.user_id = current_user.id %>
+        <%= form_for ac do |f| %>
+          Comment: <%= f.text_field :content, :size => 45 %>
+          <%= f.hidden_field :user_id %>
+          <%= f.hidden_field :answer_id %>
+          <%= f.button "Submit" %>
+        <% end %>
       <% end %>
     </td>
   </tr>
