@@ -13,7 +13,7 @@
   <tbody>
     <% @answer_comments.each do |answer_comment| %>
       <tr>
-        <td><%= answer_comment.content %></td>
+        <td><%=br answer_comment.content %></td>
         <td><%= answer_comment.user.name %></td>
         <td><%= answer_comment.answer_id %></td>
         <td><%= link_to 'Show', answer_comment %></td>
