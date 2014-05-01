@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => :registrations }
   resources :question_comments
   resources :question_votes
-  resources :questions
+  resources :questions do
+    member do 
+      get "edit_comment"
+      put "post_comment"
+      post "upvote", :as => "upvote"
+      post "downvote", :as => "downvote"
+    end
+  end
   resources :answers
   resources :answer_votes
   resources :answer_comments

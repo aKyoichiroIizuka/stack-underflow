@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :edit_comment, :post_comment]
 
   # GET /questions
   # GET /questions.json
@@ -59,6 +59,30 @@ class QuestionsController < ApplicationController
       format.html { redirect_to questions_url }
       format.json { head :no_content }
     end
+  end
+
+  def edit_comment
+
+  end
+
+  def post_comment
+    
+  end
+
+  def upvote
+    @vote = QuestionVote.new
+    @vote.question_id = @question.id
+    @vote.value = 1
+    @vote.save
+    redirect_to @question, notice: "Question is upvoted."
+  end
+
+  def downvote
+    @vote = QuestionVote.new
+    @vote.question_id = @question.id
+    @vote.value = -1
+    @vote.save
+    redirect_to @question, notice: "Question is downvoted."
   end
 
   private

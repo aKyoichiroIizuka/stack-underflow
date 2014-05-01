@@ -7,7 +7,7 @@
 	<td class="center views">0<br />view</td>
 	<td>
 	<%= link_to question.title, question %><br />
-	asked by <%= question.user && question.user.email %>
+	asked by <%= question.user && question.user.name %>
 	at <%= question.updated_at.strftime('%H:%M:%S, %b %d, %Y') %>
 	</td>
 </tr>

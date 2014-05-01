@@ -1,7 +1,7 @@
 <h2><%= @question.title %></h2>
 
 <p>
-  <%= button_tag "+" %> <%= @question.total_points %> <%= button_tag "-" %>
+  <%= button_to "+", :action => "upvote" %> <%= @question.total_points %> <%= button_to "-", action: "downvote" %>
 </p>
 <p>
   <%=br @question.content %>
