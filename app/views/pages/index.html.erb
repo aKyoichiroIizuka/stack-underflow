@@ -1,6 +1,15 @@
 <h1>Stack Underflow</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
 
+<h2>Questions</h2>
+<% @questions.each do |question| %>
+	<ul>
+		<li>Title: <%= link_to question.title, question %></li>
+		<li>Question by: <%= question.user && question.user.email %></li>
+		<li><%= question.answers.length %> answer(s)</li>
+	</ul>
+<% end %>
+
 <h2>Links</h2>
 <ul>
 	<li><%= link_to "Answers", answers_path %></li>
