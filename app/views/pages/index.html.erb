@@ -6,7 +6,7 @@
 	<td class="center answers"><%= question.answers.length %><br />answers</td>
 	<td class="center views">0<br />views</td>
 	<td>
-	<%= link_to question.title, question %><br />
+	<%= link_to abbr(question.title), question %><br />
 	asked by <%= question.user && question.user.name %>
 	at <%= question.updated_at.strftime('%H:%M:%S, %b %d, %Y') %>
 	</td>
