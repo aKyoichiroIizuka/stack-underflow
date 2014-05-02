@@ -14,4 +14,9 @@ module ApplicationHelper
       s
 	  end
   end
+
+  def markdown(s)
+    options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
+    Redcarpet.new(s, *options).to_html.html_safe
+  end
 end

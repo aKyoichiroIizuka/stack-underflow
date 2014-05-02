@@ -12,7 +12,7 @@
       <% end %>
     </td>
     <td class="question-content-area">
-      <%=br @question.content %>
+      <%=markdown @question.content %>
     </td>
   </tr>
 </table>
@@ -62,7 +62,7 @@ Comment: <%= f.text_field :content, :size => 45 %>
       <% if answer.answer_comments.length > 0 %>
         <% answer.answer_comments.each do |ac| %>
           <hr />
-          <p><%=br ac.content %></p>
+          <p><%=markdown ac.content %></p>
           <p>by <%= ac.user && ac.user.name %></p>
         <% end %>
       <% end %>
