@@ -6,7 +6,9 @@ class Question < ActiveRecord::Base
   
   belongs_to :user
 
-  validates :title, :presence => true
+  validates :title, :presence => true, :length => {:minimum => 1, :maximum => 255}
+  validates :user_id, :numericality => {:only_integer => true, :greater_than => 0}
+  validates :content, :presence => true, :length => {:minimum => 1}
 
   def total_points
     q=self.question_votes
