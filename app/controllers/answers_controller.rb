@@ -67,21 +67,37 @@ class AnswersController < ApplicationController
   end
 
   def upvote
-    @vote = AnswerVote.new
+    if current_user.nil?
+      redirect_to root_path, notice: "Not logged in."
+      return false
+    end
+    user_id = current_user.id
+    @vote = AnswerVote.find_or_create_by(user_id: user_id)
     @vote.answer_id = @answer.id
-    @vote.user_id = current_user.id
-    @vote.value = 1
+    if @vote.value == -1
+      @vote.value = 0
+    else
+      @vote.value = 1
+    end
     @vote.save
-    redirect_to @answer.question, notice: "Answer is upvoted."
+    redirect_to @answer.question, notice: "Answer is upvoted. Your vote to this question is #{@vote.value} points."
   end
 
   def downvote
-    @vote = AnswerVote.new
+    if current_user.nil?
+      redirect_to root_path, notice: "Not logged in."
+      return false
+    end
+    user_id = current_user.id
+    @vote = AnswerVote.find_or_create_by(user_id: user_id)
     @vote.answer_id = @answer.id
-    @vote.user_id = current_user.id
-    @vote.value = -1
+    if @vote.value == 1
+      @vote.value = 0
+    else
+      @vote.value = -1
+    end
     @vote.save
-    redirect_to @answer.question, notice: "Answer is downvoted."
+    redirect_to @answer.question, notice: "Answer is downvoted. Your vote to this question is #{@vote.value} points."
   end
 
   private
