@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def markdown(s)
-    options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
-    Redcarpet.new(s, *options).to_html.html_safe
+    options = {hard_wrap: true, filter_html: true, autolink: true, no_intra_emphasis: true, fenced_code: true, gh_blockcode: true}
+    return Redcarpet::Markdown.new(Redcarpet::Render::HTML, options).render(s).html_safe
   end
 end

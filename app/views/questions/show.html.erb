@@ -57,12 +57,12 @@ Comment: <%= f.text_field :content, :size => 45 %>
       <% end %>
     </td>
     <td class="answer-content-area">
-      <p><%=br answer.content %></p>
+      <p><%=markdown answer.content %></p>
       <p>by <%= answer.user && answer.user.name %></p>
       <% if answer.answer_comments.length > 0 %>
         <% answer.answer_comments.each do |ac| %>
           <hr />
-          <p><%=markdown ac.content %></p>
+          <p><%=br ac.content %></p>
           <p>by <%= ac.user && ac.user.name %></p>
         <% end %>
       <% end %>
