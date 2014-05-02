@@ -1,0 +1,20 @@
+<h2>Users</h2>
+
+<table>
+<tr>
+	<th>ID</th>
+	<th>Name</th>
+	<th>Questions</th>
+	<th>Answers</th>
+	<th>Points</th>
+</tr>
+<% @users.each do |user| %>
+	<tr>
+		<td><%= user.id %></td>
+		<td><%= link_to user.name, user %></td>
+		<td><%= user.questions.length %></td>
+		<td><%= user.answers.length %></td>
+		<td><%= user.total_points %></td>
+	</tr>
+<% end %>
+</table>

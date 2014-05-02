@@ -1,0 +1,34 @@
+<h2>User: <%= @user.name %></h2>
+
+<table>
+	<tr>
+		<td>Name</td>
+		<td><%= @user.name %></td>
+	</tr>
+	<tr>
+		<td>ID</td>
+		<td><%= @user.id %></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><%= @user.email %></td>
+	</tr>
+</table>
+
+<h3>Questions</h3>
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Date</th>
+		<th>Votes</th>
+	</tr>
+<% @user.questions.each do |question| %>
+	<tr>
+		<td><%= link_to question.title, question %></td>
+		<td><%= question.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+		<td><%= question.total_points %></td>
+	</tr>
+<% end %>
+</table>
+
+<p><%= link_to "Back", users_path %></p>

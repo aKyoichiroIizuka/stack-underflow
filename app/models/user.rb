@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   has_many :answer_comments
 
   validates :name, :presence => true, :uniqueness => true
+
+  def total_points
+    self.questions.inject(0){|x, y| x + y.total_points}
+  end
 end

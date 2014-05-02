@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => :registrations }
+  get 'users/:id' => 'users#show', as: :user
+  get 'users/' => 'users#index', as: :users
   resources :question_comments
   resources :question_votes
   resources :questions do
