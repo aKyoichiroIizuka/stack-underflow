@@ -80,7 +80,7 @@ class AnswersController < ApplicationController
       @vote.value = 1
     end
     @vote.save
-    redirect_to @answer.question, notice: "Answer is upvoted. Your vote to this question is #{@vote.value} points."
+    redirect_to @answer.question, notice: "Answer is upvoted. Your vote to this answer is #{@vote.value} points."
   end
 
   def downvote
@@ -97,7 +97,7 @@ class AnswersController < ApplicationController
       @vote.value = -1
     end
     @vote.save
-    redirect_to @answer.question, notice: "Answer is downvoted. Your vote to this question is #{@vote.value} points."
+    redirect_to @answer.question, notice: "Answer is downvoted. Your vote to this answer is #{@vote.value} points."
   end
 
   private
