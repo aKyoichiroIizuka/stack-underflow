@@ -15,10 +15,15 @@ class AnswerTest < ActiveSupport::TestCase
 		ans = Answer.new({:content => "answer1", :user_id => 1, :question_id => 1})		
 		assert ans.save, "save answer"
 
-#		ans = Answer.new({:content => 0, :user_id => 1, :question_id => 1})		
-#		assert_equal ans.save, true, "content is 0"
-#		ans = Answer.new({:content => 0.0, :user_id => 1, :question_id => 1})		
-#		assert_equal ans.save, true, "content is 0.0"
+		ans = Answer.new({:content => 0, :user_id => 1, :question_id => 1})		
+		assert_equal ans.save, true, "content is 0"
+		newans = Answer.find(ans.id)
+		assert_equal newans.content, '0',"content is '0"
+		
+		ans = Answer.new({:content => 0.1, :user_id => 1, :question_id => 1})
+		assert_equal ans.save, true, "content is 0.1"
+		newans = Answer.find(ans.id)
+		assert_equal newans.content, '0.1', "content is '0.1'"
 	end
 
 	test "not equal type save" do
@@ -53,5 +58,5 @@ class AnswerTest < ActiveSupport::TestCase
 		assert_equal ans.save, false, "question_id is 0"
 		ans = Answer.new({:content => "answer1", :user_id => 1, :question_id =>-1})
 		assert_equal ans.save, false, "question_id is -1"
-	end	
+	end
 end
