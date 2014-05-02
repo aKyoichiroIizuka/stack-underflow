@@ -1,4 +1,6 @@
 class Answer < ActiveRecord::Base
+  after_save :update_timestamps_of_question
+  
   has_many :answer_votes
   has_many :answer_comments
   belongs_to :question
@@ -14,4 +16,9 @@ class Answer < ActiveRecord::Base
     	.sum(:value)
     return ans
   end
+
+  private
+    def update_timestamps_of_question
+      self.question.touch
+    end
 end
