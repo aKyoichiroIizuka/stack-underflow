@@ -28,8 +28,12 @@ class QuestionCommentsController < ApplicationController
 
     respond_to do |format|
       if @question_comment.save
-        format.html { redirect_to @question_comment, notice: 'Question comment was successfully created.' }
-        format.json { render :show, status: :created, location: @question_comment }
+        if @question_comment.question
+          format.html { redirect_to @question_comment.question, notice: 'Question comment was successfully created.' }
+        else 
+          format.html { redirect_to @question_comment, notice: 'Question comment was successfully created.' }
+          format.json { render :show, status: :created, location: @question_comment }
+        end
       else
         format.html { render :new }
         format.json { render json: @question_comment.errors, status: :unprocessable_entity }
