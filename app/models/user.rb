@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true
 
   def total_points
+    self.question_points + self.answer_points 
+  end
+
+  def question_points
     self.questions.inject(0){|x, y| x + y.total_points}
+  end
+
+  def answer_points
+    self.answers.inject(0){|x, y| x + y.total_points}
   end
 end
