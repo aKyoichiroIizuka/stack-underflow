@@ -18,12 +18,12 @@ class AnswerTest < ActiveSupport::TestCase
 		ans = Answer.new({:content => 0, :user_id => 1, :question_id => 1})		
 		assert_equal ans.save, true, "content is 0"
 		newans = Answer.find(ans.id)
-		assert_equal newans.content, '0',"content is '0"
+		assert_equal newans.content, '0', "content is '0'"
 		
-		ans = Answer.new({:content => 0.1, :user_id => 1, :question_id => 1})
-		assert_equal ans.save, true, "content is 0.1"
+		ans = Answer.new({:content => 0.0, :user_id => 1, :question_id => 1})
+		assert_equal ans.save, true, "content is 0.0"
 		newans = Answer.find(ans.id)
-		assert_equal newans.content, '0.1', "content is '0.1'"
+		assert_equal newans.content, '0.0', "content is '0.0'"
 	end
 
 	test "not equal type save" do

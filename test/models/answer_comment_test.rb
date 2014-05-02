@@ -15,10 +15,15 @@ class AnswerCommentTest < ActiveSupport::TestCase
 		ac = AnswerComment.new({:content => "answercomment1", :user_id => 1, :answer_id => 1})		
 		assert ac.save, "save answercomment"
 
-#		ac = Answer.new({:content => 0, :user_id => 1, :answer_id => 1})		
-#		assert_equal ac.save, true, "content is 0"
-#		ac = Answer.new({:content => 0.0, :user_id => 1, :answer_id => 1})		
-#		assert_equal ac.save, true, "content is 0.0"
+		ac = AnswerComment.new({:content => 0, :user_id => 1, :answer_id => 1})		
+		assert_equal ac.save, true, "content is 0"
+		newac = AnswerComment.find(ac.id)
+		assert_equal newac.content, '0', "content is '0'"
+		
+		ac = AnswerComment.new({:content => 0.0, :user_id => 1, :answer_id => 1})		
+		assert_equal ac.save, true, "content is 0.0"
+		newac = AnswerComment.find(ac.id)
+		assert_equal newac.content, '0.0', "content is '0.0'"
 	end
 
 	test "not equal type save" do
