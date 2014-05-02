@@ -17,20 +17,18 @@
   </tr>
 </table>
 
-<h3>Comments</h3>
-<table>
-  <% @question.question_comments.each do |comment| %>
-    <tr>
-      <td>
-        <p><%= comment.content %></p>
-        <p>by <%= comment.user && comment.user.name %></p>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<p class="question-info-area">
+  Question by <%= link_to (@question.user && @question.user.name), @question.user %><br />
+  at <%= @question.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+</p>
+
+<div class="comment-area">
+<% @question.question_comments.each do |comment| %>
+<p class="comment-row"><%= comment.content %> - <%= link_to comment.user.name, comment.user %></p>
+<% end %>
 
 <% if !current_user.nil? %>
-<%= form_for @comment do |f| %>
+<%= form_for @comment, html: {class: "comment-row"} do |f| %>
 Comment: <%= f.text_field :content, :size => 45 %>
 <% @comment.user_id = current_user ? current_user.id : 0 %>
 <%= f.hidden_field :user_id %>
@@ -39,10 +37,11 @@ Comment: <%= f.text_field :content, :size => 45 %>
 <% end %>
 <!-- <p><%= link_to "New comment", :action => "new_comment"%></p> -->
 <% else %>
-<p>Please log in to comment.</p>
+<p class="comment-row">Please log in to comment.</p>
 <% end %>
+</div>
 
-<h3>Answers</h3>
+<h2>Answers</h2>
 <% @question.answers.each do |answer| %>
 
 <table class="answers-table">
@@ -57,27 +56,32 @@ Comment: <%= f.text_field :content, :size => 45 %>
       <% end %>
     </td>
     <td class="answer-content-area">
+
       <p><%=markdown answer.content %></p>
-      <p>by <%= answer.user && answer.user.name %></p>
+
+      <p class="answer-info-area">
+        Answer by <%= link_to (answer.user && answer.user.name), answer.user %><br />
+        at <%= answer.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+      </p>
+
+      <div class="comment-area">
       <% if answer.answer_comments.length > 0 %>
         <% answer.answer_comments.each do |ac| %>
-          <hr />
-          <p><%=br ac.content %></p>
-          <p>by <%= ac.user && ac.user.name %></p>
+          <p class="comment-row"><%=br ac.content %> - <%= link_to (ac.user && ac.user.name), ac.user %></p>
         <% end %>
       <% end %>
       <% if !current_user.nil? %>
-        <hr />
         <% ac = AnswerComment.new %>
         <% ac.answer_id = answer.id %>
         <% ac.user_id = current_user.id %>
-        <%= form_for ac do |f| %>
+        <%= form_for ac, html: {class: "comment-row"} do |f| %>
           Comment: <%= f.text_field :content, :size => 45 %>
           <%= f.hidden_field :user_id %>
           <%= f.hidden_field :answer_id %>
           <%= f.button "Submit" %>
         <% end %>
       <% end %>
+      </div>
     </td>
   </tr>
 </table>

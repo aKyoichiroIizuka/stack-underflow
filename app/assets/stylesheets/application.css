@@ -40,6 +40,11 @@ div#main{
 	background-color: #fcfcfc;
 }
 
+#main h2{
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
 td.center{
 	text-align: center;
 	width: 40px;
@@ -51,9 +56,44 @@ td.views{
 	color: dimgray;
 }
 
-table.answers-table, table.questions-table{
-	width: 95%;
+table.answers-table, table.question-table{
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 td.vote-area{
 	width: 40px;
+	padding: 5px;
+}
+td.question-content-area, td.answer-content-area{
+	padding: 10px
+}
+
+table.question-table{
+	padding: 5px;
+}
+
+p.question-info-area, p.answer-info-area{
+	background-color: #efefef;
+	width: 190px;
+	padding: 6px;
+	font-size: 11px;
+	margin-left: auto;
+}
+
+.comment-area .comment-row:first-child{
+	border-top: 1px dotted #000;
+}
+
+p.comment-row, form.comment-row{
+	padding: 5px 6px 5px 35px;
+	border-bottom: 1px dotted #000;
+	margin: 1px;
+}
+
+code{
+	display: block;
+	margin: 8px;
+	padding: 8px;
+	background: #e0e0e0;
 }
