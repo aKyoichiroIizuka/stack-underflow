@@ -42,3 +42,5 @@ gem 'spring',        group: :development
 gem 'devise'
 
 gem 'rails_12factor'
+
+gem 'rspec-rails', :group => [:development, :test]
